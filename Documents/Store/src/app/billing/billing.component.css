@@ -8,4 +8,9 @@
    margin: 10px 0 0 10px;
    flex-grow: 1;
    height: 50px;
+   margin: 30px;
+}
+
+#description{
+    padding: 10px;
 }

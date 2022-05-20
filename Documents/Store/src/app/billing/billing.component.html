@@ -1,39 +1,50 @@
 <div class="container-fluid">
-    <form>
+  <form>
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea
+        class="form-control"
+        id="description"
+        required
+        ngModel
+      ></textarea>
+    </div>
+    <div class="form-group">
+      <label for="cost">Cost</label>
+      <input type="text" id="cost" required ngModel />
+    <div class="form-group">
+      <label for="complete">Quantity</label>
+      <input id="qnty" required ngModel />
+    </div>
     
-        <div class="form-group">
-  
-            <label for="description">Description</label>
-            <textarea class="form-control" id="description" required></textarea>
-  
-        </div>
-        <div class="form-group">
-            <label for="cost">Cost</label>
-            <input type='text' id="cost" required>
-  
-        </div>
-        <div class="form-group">
-            <label for="complete">Quantity</label>
-            <input type='' id="qnty" required>
-  
-        </div>
-        <div class="form-group">
-            <label id= "vat"  for="complete">VAT</label>
-            <input type='#' id="vat" required>
-  
-        </div>
-        <br>
-        <!-- <button class="btn btn-secondary">Delete Row</button> -->
-        <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
-              Action
-            </button>
-            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-              <li><a class="dropdown-item active" href="#">Delete Row</a></li>
-              <li><a class="dropdown-item" href="#">Add Row</a></li>
-            </ul>
-          </div>
-    </form>
-  </div>
-  
-  
+    <div class="form-group">
+      <label id="vat" for="complete">VAT</label>
+      <input type="#" id="vat" required ngModel />
+    </div>
+    
+    <div class="form-group">
+      <label for="complete">Total</label>
+      <input id="total" required ngModel />
+    </div>
+    <br />
+    <!-- <button class="btn btn-secondary">Delete Row</button> -->
+    <div class="dropdown">
+      <button
+        class="btn btn-secondary dropdown-toggle"
+        type="button"
+        id="dropdownMenuButton2"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        Action
+      </button>
+      <ul
+        class="dropdown-menu dropdown-menu-dark"
+        aria-labelledby="dropdownMenuButton2"
+      >
+        <li><a class="dropdown-item active" href="#">Delete Row</a></li>
+        <li><a class="dropdown-item" href="#">Add Row</a></li>
+      </ul>
+    </div>
+  <!-- </form> -->
+</div>
