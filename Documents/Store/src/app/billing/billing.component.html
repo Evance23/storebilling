@@ -1,5 +1,5 @@
 
-<body ng-controller="myController">  
+<div [formGroup]="billingForm">  
     <div class="container py-3">  
         <!-- building the table for displsying the different products and price changes   -->
         <table class="table table-bordered">  
@@ -15,29 +15,59 @@
                 </tr>  
             </thead>  
             <tbody>  
-                <tr ng:repeat="item in invoice.items">  
+                <tr>
+                <!-- <tr ng:repeat="item in invoice.items">   -->
                     <td>  
-                        <input type="text" ng:model="item.description" class="form-control">  
+                        <input type="text"  formControlName="product" class="form-control">  
                     </td>  
                     <td>  
-                        <input type="number" min="1" ng:model="item.qty" ng:required class="form-control">  
+                        <input type="number" min="1" formControlName="quantity" ng:required class="form-control">  
                     </td>  
                     <td>  
-                        <input type="number" min="1" ng:model="item.cost" ng:required class="form-control">  
-                    </td>  
-                    <!-- <td>{{item.qty * item.cost | currency:'$'}}</td>   -->
+                        <input type="number" min="1" formControlName="cost" ng:required class="form-control">  
+                    </td> 
+
+                    
+                    <td>  
+                        <input type="number" formControlName="vat" class="form-control">  
+                    </td>
+                    <td>{{billingForm.get('quantity')?.value * billingForm.get('cost')?.value| currency:'$'}}</td> 
                     <td>  
                         <a href ng:click="removeItem($index)" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>  
                     </td>  
                 </tr>  
+                <tr *ngFor="let bill of billingDetailsArray.controls" [formGroup]="bill">
+                    <td>  
+                        <input type="text"  formControlName="product" class="form-control">  
+                    </td>  
+                    <td>  
+                        <input type="number" min="1" formControlName="quantity" ng:required class="form-control">  
+                    </td>  
+                    <td>  
+                        <input type="number" min="1" formControlName="cost" ng:required class="form-control">  
+                    </td> 
+
+                    
+                    <td>  
+                        <input type="number" formControlName="vat" class="form-control">  
+                    </td>
+                    <td>{{billingForm.get('quantity')?.value * billingForm.get('cost')?.value| currency:'$'}}</td> 
+                    <td>  
+                        <a href ng:click="removeItem($index)" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>  
+                    </td>  
+                
+                </tr>
                 <tr>  
-                    <td><a href ng:click="addItem()" class="btn btn-sm btn-primary rounded-0">Add Product</a></td>  
-                    <td></td>  
+                    <!-- <td><a href (click)="addBillingDetails()" class="btn btn-sm btn-primary rounded-0">Add Product</a></td>   -->
+                  
+                    <td>  <button (click)="addBillingDetails()" >plus Button</button></td>  
+
                     <td>Total:</td>  
                     <!-- <td>{{total() | currency:'$'}}</td>   -->
                 </tr>  
             </tbody>  
-        </table>  
+        </table>
+        <p>{{billingForm.value | json}}</p> 
     </div>  
-</body>  
+</div>  
 
