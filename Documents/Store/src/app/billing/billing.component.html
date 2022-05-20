@@ -1,50 +1,43 @@
-<div class="container-fluid">
-  <form>
-    <div class="form-group">
-      <label for="description">Description</label>
-      <textarea
-        class="form-control"
-        id="description"
-        required
-        ngModel
-      ></textarea>
-    </div>
-    <div class="form-group">
-      <label for="cost">Cost</label>
-      <input type="text" id="cost" required ngModel />
-    <div class="form-group">
-      <label for="complete">Quantity</label>
-      <input id="qnty" required ngModel />
-    </div>
-    
-    <div class="form-group">
-      <label id="vat" for="complete">VAT</label>
-      <input type="#" id="vat" required ngModel />
-    </div>
-    
-    <div class="form-group">
-      <label for="complete">Total</label>
-      <input id="total" required ngModel />
-    </div>
-    <br />
-    <!-- <button class="btn btn-secondary">Delete Row</button> -->
-    <div class="dropdown">
-      <button
-        class="btn btn-secondary dropdown-toggle"
-        type="button"
-        id="dropdownMenuButton2"
-        data-bs-toggle="dropdown"
-        aria-expanded="false"
-      >
-        Action
-      </button>
-      <ul
-        class="dropdown-menu dropdown-menu-dark"
-        aria-labelledby="dropdownMenuButton2"
-      >
-        <li><a class="dropdown-item active" href="#">Delete Row</a></li>
-        <li><a class="dropdown-item" href="#">Add Row</a></li>
-      </ul>
-    </div>
-  <!-- </form> -->
-</div>
+
+<body ng-controller="myController">  
+    <div class="container py-3">  
+        <!-- building the table for displsying the different products and price changes   -->
+        <table class="table table-bordered">  
+            <thead class="bg-info text-white text-upparcase">  
+                <tr>  
+                    <th>Product</th>  
+                    <th>Quantity</th>  
+                    <th>Cost</th>  
+                    <th>VAT</th> 
+                    <th>Total</th>  
+                    <th>Delete</th> 
+                    <th></th> 
+                </tr>  
+            </thead>  
+            <tbody>  
+                <tr ng:repeat="item in invoice.items">  
+                    <td>  
+                        <input type="text" ng:model="item.description" class="form-control">  
+                    </td>  
+                    <td>  
+                        <input type="number" min="1" ng:model="item.qty" ng:required class="form-control">  
+                    </td>  
+                    <td>  
+                        <input type="number" min="1" ng:model="item.cost" ng:required class="form-control">  
+                    </td>  
+                    <!-- <td>{{item.qty * item.cost | currency:'$'}}</td>   -->
+                    <td>  
+                        <a href ng:click="removeItem($index)" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>  
+                    </td>  
+                </tr>  
+                <tr>  
+                    <td><a href ng:click="addItem()" class="btn btn-sm btn-primary rounded-0">Add Product</a></td>  
+                    <td></td>  
+                    <td>Total:</td>  
+                    <!-- <td>{{total() | currency:'$'}}</td>   -->
+                </tr>  
+            </tbody>  
+        </table>  
+    </div>  
+</body>  
+
